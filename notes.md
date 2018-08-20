@@ -1,5 +1,5 @@
 # Meeting Notes
---
+
 ### 15/08/2018
 
 * schoolie.com - base
@@ -34,5 +34,3 @@
 * chatbox implementation/forum
 
 * ewriteright.in
-
---
