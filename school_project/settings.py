@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+ACCOUNT_ACTIVATION_DAYS = 7
 # Application definition
 
 INSTALLED_APPS = [
