@@ -4,18 +4,19 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 class UserType(models.Model):
-    """
-        UserType: Used to store the type of user Ex: Student, Principal, Professor etc.
-    """
-    name = models.CharField("Type of User", max_length=50)
+	"""
+		UserType: Used to store the type of user Ex: Student, Principal, Professor etc.
+	"""
+	name = models.CharField("Type of User", max_length=50)
 
-    def __str__(self):
-        return self.name
+	def __str__(self):
+		return self.name
 
 class School(models.Model):
 	"""
-    School: Strores all details about the school
-    """
+	School: Strores all details about the school
+	"""
+	sid = models.IntegerField(primary_key=True)
 	name = models.CharField(max_length=30, blank=True, null=True)
 	address = models.TextField()
 	description = models.TextField()
@@ -43,20 +44,20 @@ class User(AbstractUser):
 
 
 class Facilities(models.Model):
-    """
-    Facilities: Stores individual facility provided info
-    """
-    name = models.TextField(blank=True, null=True)
-    facility_type = models.TextField(blank=True, null=True)
+	"""
+	Facilities: Stores individual facility provided info
+	"""
+	name = models.TextField(blank=True, null=True)
+	facility_type = models.TextField(blank=True, null=True)
 
-    def __str__(self):
-        return self.name
+	def __str__(self):
+		return self.name
 
 
 class Reviews(models.Model):
 	"""
-    Reviews: Stores reviews for each school
-    """
+	Reviews: Stores reviews for each school
+	"""
 	school = models.ForeignKey('School', blank=True, null=True)
 	parent = models.ForeignKey('User', blank=True, null=True)
 	review_content = models.TextField(blank=True, null=True)
