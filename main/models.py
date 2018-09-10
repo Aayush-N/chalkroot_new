@@ -27,7 +27,7 @@ class School(models.Model):
 	admission_info = models.TextField()
 	overall_rating = models.FloatField(blank=True)
 	academic_record = models.TextField()
-
+	added_by = models.ForeignKey("User", blank=True, null=True, related_name='school_creator')
 	def __str__(self):
 		return self.name
 

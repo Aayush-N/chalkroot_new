@@ -31,6 +31,8 @@ ACCOUNT_ACTIVATION_DAYS = 7
 
 AUTH_USER_MODEL = 'main.User'
 
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -58,7 +60,7 @@ ROOT_URLCONF = 'school_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR, ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
