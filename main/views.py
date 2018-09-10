@@ -36,8 +36,8 @@ class SchoolCreateView(CreateView):
 		return context
 	
 	def form_valid(self, form):
-		create = form.save()
-		User = self.request.user
+		create = forms.save(commit=False)
+		create.added_by = self.request.user
 		create.save()
 		return HttpResponseRedirect('/school/')
 	

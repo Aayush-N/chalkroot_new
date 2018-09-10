@@ -7,5 +7,4 @@ class SchoolCreateForm(forms.ModelForm):
 	class Meta:
 		User = get_user_model()
 		model = School
-		fields = ('__all__')
 		exclude = ('added_by', 'overall_rating')
