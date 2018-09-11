@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, FormView, View, CreateView
+from django.views.generic.list import ListView
+
 from django.urls import reverse_lazy
 
 from django.contrib.auth import get_user_model
@@ -44,3 +46,24 @@ class SchoolCreateView(CreateView):
 	def form_invalid(self,form):
 		print(form.errors)
 		return HttpResponseRedirect('/add/school')
+
+
+class SchoolListView(ListView):
+	model = School
+	template_name = "school_list.html"
+
+	def get_context_data(self, **kwargs):
+		context = super(SchoolListView, self).get_context_data(**kwargs)
+		return context
+
+
+class SearchManager(models.Manager):
+    def search(self, **kwargs):
+        qs = self.get_query_set()
+        if kwargs.get('name', ''):
+            qs = qs.filter(name__icontains=kwargs['name'])
+        if kwargs.get('city', []):
+            qs = qs.filter(city_type=kwargs['city'])
+        if kwargs.get('board', []):
+            qs = qs.filter(board=kwargs['board'])
+        return qs
