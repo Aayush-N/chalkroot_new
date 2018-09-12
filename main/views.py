@@ -56,6 +56,14 @@ class SchoolListView(ListView):
 		context = super(SchoolListView, self).get_context_data(**kwargs)
 		return context
 
+def search_view(request):
+    form = SearchForm(request.GET)
+    if form.is_valid():
+        qs = School.objects.search(form.cleaned_data)
+    else:
+        qs = School.objects.all()
+    return render(request, "home.html",
+            {"form": form, "object_list": qs})
 
 class SearchManager(models.Manager):
     def search(self, **kwargs):

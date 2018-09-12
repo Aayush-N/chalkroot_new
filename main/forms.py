@@ -8,3 +8,8 @@ class SchoolCreateForm(forms.ModelForm):
 		User = get_user_model()
 		model = School
 		exclude = ('added_by', 'overall_rating')
+
+class SearchForm(forms.ModelForm):
+	class Meta:
+		model = School
+		exclude = ('added_by','sid','contact_number','website','photos','admission_info',)

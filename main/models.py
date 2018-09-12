@@ -18,15 +18,15 @@ class School(models.Model):
 	"""
 	sid = models.IntegerField(primary_key=True)
 	name = models.CharField(max_length=30, blank=True, null=True)
-	address = models.TextField()
-	description = models.TextField()
-	facilities = models.ForeignKey('Facilities')
-	contact_number = models.CharField(max_length=20)
+	address = models.TextField(blank=True, null=True)
+	description = models.TextField(blank=True, null=True)
+	facilities = models.ForeignKey('Facilities',blank=True, null=True)
+	contact_number = models.CharField(max_length=20,blank=True, null=True)
 	website = models.CharField(max_length=30, blank=True, null=True)
-	photos = models.TextField()
-	admission_info = models.TextField()
+	photos = models.TextField(blank=True, null=True)
+	admission_info = models.TextField(blank=True, null=True)
 	overall_rating = models.FloatField(blank=True)
-	academic_record = models.TextField()
+	academic_record = models.TextField(blank=True, null=True)
 	added_by = models.ForeignKey("User", blank=True, null=True, related_name='school_creator')
 	def __str__(self):
 		return self.name
