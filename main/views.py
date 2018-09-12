@@ -63,8 +63,10 @@ def search_view(request):
     if form.is_valid():
         if form.cleaned_data["name"]:
             schools = countries.filter(name__icontains=form.cleaned_data["name"])
-        elif form.cleaned_data["address"]:
-            schools = countries.filter(government=form.cleaned_data["address"])
+        elif form.cleaned_data["city"]:
+            schools = countries.filter(government=form.cleaned_data["city"])
+        elif form.cleaned_data["area"]:
+            schools = countries.filter(government=form.cleaned_data["area"])
         elif form.cleaned_data["academic_record"]:
             schools = countries.filter(industries=form.cleaned_data["academic_record"])
     return render(request, "school_list.html",

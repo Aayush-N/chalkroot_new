@@ -1,1 +1,259 @@
-{{school.name}}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{{school.name}}</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'css/stylish-portfolio.css' %}" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    {% include 'partials/nav_primary.html' %}
+    <header class="masthead d-flex" style="background:url('{{school.photos.url}}'); background-repeat: no-repeat; background-position: center center; background-color: rgba(255,255,255,0.6); background-blend-mode: lighten;">
+      <div class="container text-center my-auto">
+        <h1 class="mb-1">{{school.name | title}}</h1>
+        <h3 class="mb-5">
+          <em>{{school.city | title}}, {{school.state | title}}</em>
+        </h3>
+      </div>
+      <div class="overlay"></div>
+    </header>
+
+
+    <!-- Services -->
+    <section class="content-section text-white text-center" id="services">
+      <div class="container">
+        <div class="content-section-heading">
+          <h2 class="mb-5">About</h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="fa fa-map-marker-alt"></i>
+            </span>
+            <h4>
+              <strong>{{school.address_line1 | title}}, {{school.address_line2 | title}}<br>{{school.area | title}}<br>{{school.city | title}}</strong>
+            </h4>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="fa fa-phone"></i>
+            </span>
+            <h4>
+              <strong>{{school.contact_number}}</strong>
+            </h4>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="fa fa-globe"></i>
+            </span>
+            <h4>
+              <strong>{{school.website}}</strong>
+            </h4>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="fa fa-star"></i>
+            </span>
+            <h4>
+              <strong>{{school.overall_rating}}</strong>
+            </h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="content-section" id="portfolio">
+        <div class="content-section-heading text-center">
+          <h2 class="mb-5">More...</h2>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-lg-6">
+            <a class="portfolio-item" href="#" data-toggle="modal" data-target="#facilities">
+              <span class="caption">
+                <span class="caption-content">
+                  <h1>Facilites</h1>
+                </span>
+              </span>
+              <img class="img-fluid" src="{% static 'img/portfolio-1.jpg' %}" alt="">
+            </a>
+          </div>
+          <div class="col-lg-6">
+            <a class="portfolio-item" href="#">
+              <span class="caption">
+                <span class="caption-content">
+                  <h1>Images</h1>
+                </span>
+              </span>
+              <img class="img-fluid" src="{% static 'img/portfolio-5.jpg' %}" alt="">
+            </a>
+          </div>
+          <div class="col-lg-6">
+            <a class="portfolio-item" href="#" data-toggle="modal" data-target="#other">
+              <span class="caption">
+                <span class="caption-content">
+                  <h1>Other Information</h1>
+                </span>
+              </span>
+              <img class="img-fluid" src="{% static 'img/portfolio-3.jpg' %}" alt="">
+            </a>
+          </div>
+          <div class="col-lg-6">
+            <a class="portfolio-item" href="#">
+              <span class="caption">
+                <span class="caption-content">
+                  <h1>Compare</h1>
+                </span>
+              </span>
+              <img class="img-fluid" src="{% static 'img/portfolio-4.jpg' %}" alt="">
+            </a>
+          </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-one">
+  <div class="top-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3">
+          <h3>INFORMATION</h3>
+          <ul>
+            <li><a href="#">Payment Option</a></li>
+            <li><a href="#">Free Schedule</a></li>
+            <li><a href="#">Getting Started</a></li>
+            <li><a href="#">Bitcoin Calculator</a></li>
+          </ul>
+        </div>
+        <!-- End of .col-sm-3 -->
+
+        <div class="col-sm-3 col-md-3 col-lg-3">
+          <h3>Our Services</h3>
+          <ul>
+            <li><a href="#">Graphic Design</a></li>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Web Development</a></li>
+          </ul>
+        </div>
+        <!-- End of .col-sm-3 -->
+
+        <div class="col-sm-3 col-md-3 col-lg-3">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Partners</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">FAQ’s</a></li>
+            <li><a href="#">Badges</a></li>
+          </ul>
+        </div>
+        <!-- End of .col-sm-3 -->
+
+        <div class="col-sm-3 col-md-3 col-lg-3">
+          <h3>Follow Us</h3>
+          <ul>
+              <li>
+                  <a href="">
+                      Facebook
+                  </a>
+              </li>
+              <li>
+                  <a href="">
+                      Twitter
+                  </a>
+              </li>
+              <li>
+                  <a href="">
+                      Linkedin
+                  </a>
+              </li>
+              <li>
+                  <a href="">
+                      Google PLus
+                  </a>
+              </li>
+          </ul>
+        </div>
+        <!-- End of .col-sm-3 -->
+
+      </div>
+    </div> <!-- end container -->
+  </div>
+  <div class="footer-bottom">
+    <h5>Copyright 2018. All rights reserved.</h5>
+    <h6><a href="">School Aggregator</a></h6>
+  </div>
+</footer>
+
+<div class="modal fade" id="facilities">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      	<div class="modal-content">
+      
+	        <div class="modal-header">
+	          	<h4 class="modal-title">Facilities</h4>
+	          	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	        </div>
+	        
+	        <div class="modal-body">
+	          	{{school.facilities}}
+	        </div>
+      	</div>
+    </div>
+</div>
+
+<div class="modal fade" id="other">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      	<div class="modal-content">
+      
+	        <div class="modal-header">
+	          	<h4 class="modal-title">Other Information</h4>
+	          	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	        </div>
+	        
+	        <div class="modal-body">
+	        	<p><h4>Description</h4>
+	          	{{school.description}}</p>
+	          	<p><h4>Admission</h4>
+	          	{{school.admission_info}}</p>
+	          	<p><h4>Academic Record</h4>
+	          	{{school.academic_record}}</p>
+	        </div>
+      	</div>
+    </div>
+</div>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'js/stylish-portfolio.min.js' %}"></script>
+
+  </body>
+
+</html>

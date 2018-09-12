@@ -20,7 +20,11 @@ class School(models.Model):
 	"""
 	sid = models.IntegerField(primary_key=True)
 	name = models.CharField(max_length=30, blank=True, null=True)
-	address = models.TextField(blank=True, null=True)
+	address_line1 = models.CharField(max_length=30, blank=True, null=True)
+	address_line2 = models.CharField(max_length=30, blank=True, null=True)
+	area = models.CharField(max_length=30, blank=True, null=True)
+	city = models.CharField(max_length=30, blank=True, null=True)
+	state = models.CharField(max_length=30, blank=True, null=True)
 	description = models.TextField(blank=True, null=True)
 	facilities = models.ForeignKey('Facilities',blank=True, null=True)
 	contact_number = models.CharField(max_length=20,blank=True, null=True)

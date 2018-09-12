@@ -18,8 +18,6 @@
   ================================================== -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <!-- Favicon -->
- 	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
   	<link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/fontastic.css">
@@ -75,7 +73,19 @@
 							{% render_field form.name class="form-control" placeholder="School Name" %}
 						</div>
 						<div class="form-group">
-							{% render_field form.address class="form-control" placeholder="School Address" %}
+							{% render_field form.address_line1 class="form-control" placeholder="School Address Line 1" %}
+						</div>
+						<div class="form-group">
+							{% render_field form.address_line2 class="form-control" placeholder="School Address Line 2" %}
+						</div>
+						<div class="form-group">
+							{% render_field form.area class="form-control" placeholder="Area" %}
+						</div>
+						<div class="form-group">
+							{% render_field form.city class="form-control" placeholder="City" %}
+						</div>
+						<div class="form-group">
+							{% render_field form.state class="form-control" placeholder="State" %}
 						</div>
 						<div class="form-group">
 							{% render_field form.description class="form-control" placeholder="Description" %}
@@ -118,78 +128,7 @@
 		</div> <!-- end container -->
 	</section> <!-- end section -->
 
-<footer id="footer" class="bg-one">
-  <div class="top-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <h3>INFORMATION</h3>
-          <ul>
-            <li><a href="#">Payment Option</a></li>
-            <li><a href="#">Free Schedule</a></li>
-            <li><a href="#">Getting Started</a></li>
-            <li><a href="#">Bitcoin Calculator</a></li>
-          </ul>
-        </div>
-        <!-- End of .col-sm-3 -->
-
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <h3>Our Services</h3>
-          <ul>
-            <li><a href="#">Graphic Design</a></li>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-          </ul>
-        </div>
-        <!-- End of .col-sm-3 -->
-
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="#">Partners</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">FAQ’s</a></li>
-            <li><a href="#">Badges</a></li>
-          </ul>
-        </div>
-        <!-- End of .col-sm-3 -->
-
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <h3>Follow Us</h3>
-          <ul>
-              <li>
-                  <a href="">
-                      Facebook
-                  </a>
-              </li>
-              <li>
-                  <a href="">
-                      Twitter
-                  </a>
-              </li>
-              <li>
-                  <a href="">
-                      Linkedin
-                  </a>
-              </li>
-              <li>
-                  <a href="">
-                      Google PLus
-                  </a>
-              </li>
-          </ul>
-        </div>
-        <!-- End of .col-sm-3 -->
-
-      </div>
-    </div> <!-- end container -->
-  </div>
-  <div class="footer-bottom">
-    <h5>Copyright 2018. All rights reserved.</h5>
-    <h6><a href="">School Aggregator</a></h6>
-  </div>
-</footer> <!-- end footer -->
-
+{% include 'partials/footer.html' %}
     
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/popper.js/umd/popper.min.js' %}"> </script>
