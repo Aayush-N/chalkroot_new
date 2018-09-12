@@ -134,7 +134,7 @@ a:focus, a:hover {
 }
 
 #preloader {
-  background: #31BB9E;
+  background: rgb(162, 57, 202, 0.8);
   height: 100%;
   opacity: 1;
   filter: alpha(opacity=100);

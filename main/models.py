@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+import cloudinary
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 class UserType(models.Model):
@@ -23,7 +25,7 @@ class School(models.Model):
 	facilities = models.ForeignKey('Facilities',blank=True, null=True)
 	contact_number = models.CharField(max_length=20,blank=True, null=True)
 	website = models.CharField(max_length=30, blank=True, null=True)
-	photos = models.TextField(blank=True, null=True)
+	photos = CloudinaryField('image')
 	admission_info = models.TextField(blank=True, null=True)
 	overall_rating = models.FloatField(blank=True, null=True)
 	academic_record = models.TextField(blank=True, null=True)
