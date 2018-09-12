@@ -25,7 +25,7 @@ class School(models.Model):
 	website = models.CharField(max_length=30, blank=True, null=True)
 	photos = models.TextField(blank=True, null=True)
 	admission_info = models.TextField(blank=True, null=True)
-	overall_rating = models.FloatField(blank=True)
+	overall_rating = models.FloatField(blank=True, null=True)
 	academic_record = models.TextField(blank=True, null=True)
 	added_by = models.ForeignKey("User", blank=True, null=True, related_name='school_creator')
 	def __str__(self):

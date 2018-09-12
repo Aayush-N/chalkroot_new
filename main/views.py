@@ -5,6 +5,7 @@ from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 
 from django.contrib.auth import get_user_model
+from django.http import HttpResponse, HttpResponseRedirect
 
 from .models import *
 from .forms import *
@@ -38,7 +39,7 @@ class SchoolCreateView(CreateView):
 		return context
 	
 	def form_valid(self, form):
-		create = forms.save(commit=False)
+		create = form.save(commit=False)
 		create.added_by = self.request.user
 		create.save()
 		return HttpResponseRedirect('/school/')
