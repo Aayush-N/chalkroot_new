@@ -62,7 +62,7 @@ def search_view(request):
         qs = School.objects.search(form.cleaned_data)
     else:
         qs = School.objects.all()
-    return render(request, "home.html",
+    return render(request, "school_list.html",
             {"form": form, "object_list": qs})
 
 class SearchManager(models.Manager):
