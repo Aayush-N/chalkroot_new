@@ -58,21 +58,16 @@ class SchoolListView(ListView):
 		return context
 
 def search_view(request):
+    schools = School.objects.all()
     form = SearchForm(request.GET)
     if form.is_valid():
-        qs = School.objects.search(form.cleaned_data)
-    else:
-        qs = School.objects.all()
+        if form.cleaned_data["name"]:
+            schools = countries.filter(name__icontains=form.cleaned_data["name"])
+        elif form.cleaned_data["address"]:
+            schools = countries.filter(government=form.cleaned_data["address"])
+        elif form.cleaned_data["academic_record"]:
+            schools = countries.filter(industries=form.cleaned_data["academic_record"])
     return render(request, "school_list.html",
-            {"form": form, "object_list": qs})
+            {"form": form, "object_list": schools})
 
-class SearchManager(models.Manager):
-    def search(self, **kwargs):
-        qs = self.get_query_set()
-        if kwargs.get('name', ''):
-            qs = qs.filter(name__icontains=kwargs['name'])
-        if kwargs.get('city', []):
-            qs = qs.filter(city_type=kwargs['city'])
-        if kwargs.get('board', []):
-            qs = qs.filter(board=kwargs['board'])
-        return qs
+
