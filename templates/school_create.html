@@ -1,1 +1,203 @@
-{{form.as_p}}
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="description" content="Bingo One page parallax responsive HTML Template ">
+  
+  <meta name="author" content="Themefisher.com">
+
+  <title>Add School</title>
+
+<!-- Mobile Specific Meta
+  ================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Favicon -->
+ 	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
+  	<link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/fontastic.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+    <link rel="stylesheet" href="vendor/@fancyapps/fancybox/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body id="body">
+
+ <!--
+  Start Preloader
+  ==================================== -->
+  <div id="preloader">
+    <div class="preloader">
+      <div class="sk-circle1 sk-child"></div>
+      <div class="sk-circle2 sk-child"></div>
+      <div class="sk-circle3 sk-child"></div>
+      <div class="sk-circle4 sk-child"></div>
+      <div class="sk-circle5 sk-child"></div>
+      <div class="sk-circle6 sk-child"></div>
+      <div class="sk-circle7 sk-child"></div>
+      <div class="sk-circle8 sk-child"></div>
+      <div class="sk-circle9 sk-child"></div>
+      <div class="sk-circle10 sk-child"></div>
+      <div class="sk-circle11 sk-child"></div>
+      <div class="sk-circle12 sk-child"></div>
+    </div>
+  </div> 
+ {% include 'partials/nav_primary.html' %}
+<!-- Srart Contact Us
+		=========================================== -->		
+	<section class="contact-us section bg-gray" id="contact">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="title text-center">
+						<h2>Add School.</h2>
+						<span class="border"></span>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum reiciendis quasi itaque, obcaecati atque sit!</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<!-- Contact Form -->
+				<div class="contact-form col-12 col-md-6  mx-auto" >
+					<form id="contact-form" method="post" role="form">{% csrf_token %}
+					
+						<div class="form-group">
+							{% render_field form.sid class="form-control" placeholder="School ID" %}
+						</div>
+						<div class="form-group">
+							{% render_field form.name class="form-control" placeholder="School Name" %}
+						</div>
+						<div class="form-group">
+							{% render_field form.address class="form-control" placeholder="School Address" %}
+						</div>
+						<div class="form-group">
+							{% render_field form.description class="form-control" placeholder="Description" %}
+						</div>
+						<div class="form-group">
+							{% render_field form.facilities class="form-control" %}
+						</div>
+						<div class="form-group">
+							{% render_field form.contact_number class="form-control" placeholder="Contact Number" %}
+						</div>
+						<div class="form-group">
+							{% render_field form.website class="form-control" placeholder="Website" %}
+						</div>
+						<div class="form-group">
+							{% render_field form.photos class="form-control" placeholder="Photos" %}
+						</div>
+						<div class="form-group">
+							{% render_field form.admission_info class="form-control" placeholder="Admission Info" %}
+						</div>
+						<div class="form-group">
+							{% render_field form.academic_record class="form-control" placeholder="Academic Record" %}
+						</div>
+						<div id="mail-success" class="success">
+							Thank you. The Mailman is on His Way :)
+						</div>
+						
+						<div id="mail-fail" class="error">
+							Sorry, don't know what happened. Try later :(
+						</div>
+						
+						<div id="cf-submit">
+							<input type="submit" id="contact-submit" class="btn btn-transparent" value="Submit">
+						</div>						
+						
+					</form>
+				</div>
+				<!-- ./End Contact Form -->
+			</div> <!-- end row -->
+			
+		</div> <!-- end container -->
+	</section> <!-- end section -->
+
+<footer id="footer" class="bg-one">
+  <div class="top-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3">
+          <h3>INFORMATION</h3>
+          <ul>
+            <li><a href="#">Payment Option</a></li>
+            <li><a href="#">Free Schedule</a></li>
+            <li><a href="#">Getting Started</a></li>
+            <li><a href="#">Bitcoin Calculator</a></li>
+          </ul>
+        </div>
+        <!-- End of .col-sm-3 -->
+
+        <div class="col-sm-3 col-md-3 col-lg-3">
+          <h3>Our Services</h3>
+          <ul>
+            <li><a href="#">Graphic Design</a></li>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Web Development</a></li>
+          </ul>
+        </div>
+        <!-- End of .col-sm-3 -->
+
+        <div class="col-sm-3 col-md-3 col-lg-3">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Partners</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">FAQ’s</a></li>
+            <li><a href="#">Badges</a></li>
+          </ul>
+        </div>
+        <!-- End of .col-sm-3 -->
+
+        <div class="col-sm-3 col-md-3 col-lg-3">
+          <h3>Follow Us</h3>
+          <ul>
+              <li>
+                  <a href="">
+                      Facebook
+                  </a>
+              </li>
+              <li>
+                  <a href="">
+                      Twitter
+                  </a>
+              </li>
+              <li>
+                  <a href="">
+                      Linkedin
+                  </a>
+              </li>
+              <li>
+                  <a href="">
+                      Google PLus
+                  </a>
+              </li>
+          </ul>
+        </div>
+        <!-- End of .col-sm-3 -->
+
+      </div>
+    </div> <!-- end container -->
+  </div>
+  <div class="footer-bottom">
+    <h5>Copyright 2018. All rights reserved.</h5>
+    <h6><a href="">School Aggregator</a></h6>
+  </div>
+</footer> <!-- end footer -->
+
+    
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/popper.js/umd/popper.min.js' %}"> </script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery.cookie/jquery.cookie.js' %}"> </script>
+    <script src="{% static 'vendor/@fancyapps/fancybox/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'js/front.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+
+  </body>
+  </html>
