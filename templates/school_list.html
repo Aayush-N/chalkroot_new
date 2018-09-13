@@ -26,20 +26,52 @@
 
   	<body id="page-top">
 	{% include 'partials/nav_primary.html' %}
-	{% for r in ratings %}
-	{{r}}
-	{% endfor %}
 		<section id="portfolio">
 	  		<div class="container">
 				<div class="row">
+					<div class="col-md-3">
+						<button class="accordion">Rating</button>
+						<div class="panel">
+						  	<div class="filter-attributes checkbox">
+								<ul style="list-style: none;">
+									{% for rating in ratings %}
+										<li id="catalogue_opened_li"><label><input id="{{rating}}" type="checkbox" name="rating" value="{{rating}}">{{ rating }}</label></li>
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+
+						<button class="accordion">Board</button>
+						<div class="panel">
+						  <div class="filter-attributes checkbox">
+								<ul style="list-style: none;">
+									{% for board in board %}
+										<li id="catalogue_opened_li"><label><input id="{{board.name}}" type="checkbox" name="board" value="{{board.name}}">{{ board.name }}</label></li>
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+
+						<button class="accordion">Location</button>
+						<div class="panel">
+						  	<div class="filter-attributes checkbox">
+								<ul style="list-style: none;">
+									<li id="catalogue_opened_li"><label><input id="Bangalore" type="checkbox" name="location" value="Bangalore">Bangalore</label></li>
+									<li id="catalogue_opened_li"><label><input id="Kochi" type="checkbox" name="location" value="Kochi">Kochi</label></li>
+								</ul>
+							</div>
+						</div>
+					</div>
 	  				{% for i in object_list %}
 		  			<div class="col-md-3 col-sm-6 portfolio-item">
-						<a class="portfolio-link" href="/school/{{i.sid}}">
-			  				<img style="width:400px;height:250px;" class="img-fluid" src="{{i.photos.url}}" alt="">
-						</a>
-						<div class="portfolio-caption">
-			  				<h4>{{i.name | title}}</h4>
-			  				<p class="text-muted">{{i.city | title}}, {{i.state | title}}</p>
+		  				<div data-location="{{i.city}}" data-rating="{{i.overall_rating}}" data-board="{{i.board.name}}" class="grid-variants">
+							<a class="portfolio-link" href="/school/{{i.sid}}">
+				  				<img style="width:400px;height:250px;" class="img-fluid" src="{{i.photos.url}}" alt="">
+							</a>
+							<div class="portfolio-caption">
+				  				<h5 style="overflow:hidden; white-space:nowrap; text-overflow: ellipsis;">{{i.name | title}}</h5>
+				  				<p class="text-muted">{{i.city | title}}, {{i.state | title}}</p>
+							</div>
 						</div>
 		  			</div>
 		  			{% empty %}
@@ -87,6 +119,89 @@
 	<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
 	<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
+	<script>
+	var acc = document.getElementsByClassName("accordion");
+	var i;
+
+	for (i = 0; i < acc.length; i++) {
+	    acc[i].addEventListener("click", function() {
+	        this.classList.toggle("active");
+	        var panel = this.nextElementSibling;
+	        if (panel.style.display === "block") {
+	            panel.style.display = "none";
+	        } else {
+	            panel.style.display = "block";
+	        }
+	    });
+	}
+	</script>
+	<script>
+	$(document).ready(function() {
+  var $products = $('.portfolio-item'),
+      $variants = $('.grid-variants'),
+      $filters = $(".filter-attributes input[type='checkbox']"),
+      product_filter = new ProductFilterLevel2($products, $variants, $filters);
+  product_filter.init();
+});
+
+$(function() {
+    $(".filter-attributes input[type='checkbox']").change(function() {
+        if(this.checked) {
+            $('#filter_list').append('<hr id="filter_hr"><li style="text-transform: capitalize;" id="filter_list_li">' + $(this).attr('name') + ':' + $(this).attr('value') + '<span id="remove_filter" onclick="return removeFilter();"><a style="cursor:pointer;"><i style="color:black;" class="fa fa-times"></i></a></span></li>')
+        }
+    })
+})
+function removeFilter() {
+    _this.filters.prop('checked', false);
+}
+function ProductFilterLevel2(products, variants, filters) {
+  var _this = this;
+
+  this.init = function() {
+    this.products = products;
+    this.variants = variants;
+    this.filters = filters;
+    this.bindEvents();
+  };
+
+  this.bindEvents = function() {
+    this.filters.click(this.filterGridProducts);
+    $('#none').click(this.removeAllFilters);
+  };
+
+  this.filterGridProducts = function() {
+    //hide all
+    _this.products.hide();
+    var filteredProducts = _this.variants;
+    //filter by colour, size, shape etc
+    var filterAttributes = $('.filter-attributes'); 
+    // for each attribute check the corresponding attribute filters selected
+    filterAttributes.each(function(){
+      var selectedFilters = $(this).find('input:checked');
+      // if selected filter by the attribute
+      if (selectedFilters.length) {
+        var selectedFiltersValues = [];
+        selectedFilters.each(function() {
+          var currentFilter = $(this);
+          $('#none').css('display', 'block');
+          $('#filter_help').css('display', 'none');
+          selectedFiltersValues.push("[data-" + currentFilter.attr('name') + "='" + currentFilter.val() + "']");
+        });
+        filteredProducts = filteredProducts.filter(selectedFiltersValues.join(','));
+      }
+    });
+      filteredProducts.parent().show();
+  };
+
+  this.removeAllFilters = function() {
+    _this.filters.prop('checked', false);
+    $('#filter_help').css('display', 'block');
+    $('#none').css('display', 'none');
+    $('#filter_list').empty();
+    _this.products.show();
+  }
+}
+	</script>
   </body>
 
 </html>
