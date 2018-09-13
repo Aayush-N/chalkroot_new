@@ -42,6 +42,8 @@
 			  				<p class="text-muted">{{i.city | title}}, {{i.state | title}}</p>
 						</div>
 		  			</div>
+		  			{% empty %}
+		  			<h2 class="mx-auto">Oops...We couldn't find any schools. Try refining your search</h2>
 		  			{% endfor %}
 	  			</div>
 	  		</div>

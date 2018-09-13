@@ -14,6 +14,12 @@ from .forms import *
 class HomePageView(TemplateView):
 	template_name = "home.html"
 
+	def get_context_data(self, *args, **kwargs):
+		context = super(HomePageView, self).get_context_data(**kwargs)
+		board = Board.objects.all()
+		context['board_list'] =  board
+		return context
+
 
 class SchoolView(TemplateView):
 	template_name = "school.html"
@@ -68,14 +74,8 @@ def search_view(request):
 	schools = School.objects.all()
 	form = SearchForm(request.GET)
 	if form.is_valid():
-		if form.cleaned_data["city"]:
-			schools = schools.filter(city__icontains=form.cleaned_data["city"])
-		elif form.cleaned_data["name"]:
-			schools = schools.filter(name__icontains=form.cleaned_data["name"])
-		elif form.cleaned_data["area"]:
-			schools = schools.filter(area__icontains=form.cleaned_data["area"])
-		elif form.cleaned_data["academic_record"]:
-			schools = schools.filter(industries=form.cleaned_data["academic_record"])
+		if form.cleaned_data["city"] and form.cleaned_data["name"]:
+			schools = schools.filter(city__icontains=form.cleaned_data["city"], name__icontains=form.cleaned_data["name"])
 	return render(request, "school_list.html",
 			{"form": form, "object_list": schools})
 

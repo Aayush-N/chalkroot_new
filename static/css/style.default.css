@@ -977,6 +977,19 @@ section.newsletter .submit {
   right: 0;
   font-family: "Open Sans", sans-serif;
 }
+.city_search {
+  border-radius:0px !important;
+  height: 60px;
+  padding: 0 30px;
+  line-height: 60px;
+  background: #0e0816;
+  border: 1px solid #0e0816;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: "Open Sans", sans-serif;
+}
 
 /* Newsletter Section Media Query ------------------------------------- */
 @media (max-width: 575px) {

@@ -19,25 +19,29 @@
   <body>
 	{% include 'partials/nav_primary.html' %}
 	<section class="newsletter pt-4">    
-	  <div class="container">
-		<div class="row">
-		  <div class="col-md-12">
-			<div class="form-holder">
-			  <form action="/list/" method="get">
-				<!--select class="form-control">
-				  <option val="Bangalore">Bangalore</option>
-				  <option val="Kochi">Kochi</option>
-				</select-->
-				<div class="form-group">
-				  <input type="text" name="name" id="search" placeholder="Search schools...">
-				  <button type="submit" class="submit">Search</button>
-				</div>
-			  </form>
+	  	<div class="container">
+			<div class="row">
+		  		<div class="col-md-12">
+		  			<form action="/list/" method="get">
+				      	<div class="input-group">
+				      		<select name="city" class="form-control col-md-2 city_search">
+							  	<option val="Bangalore">Bangalore</option>
+							  	<option val="Kochi">Kochi</option>
+							</select>
+							<!--select name="board" class="form-control col-md-2 city_search">
+								{% for board in board_list %}
+							  	<option val="{{board.name}}">{{board.name}}</option>
+							  	{% endfor %}
+							</select-->
+						  	<input type="text" name="name" id="search" placeholder="Search schools..." class="form-control">
+						  	<button type="submit" class="submit">Search</button>
+						</div>
+		  			</form>
+		  		</div>
 			</div>
-		  </div>
-		</div>
-	  </div>
+	  	</div>
 	</section>
+
 	<section class="latest-posts no-padding"> 
 		<div class="row">
 		  <div class="post col-md-6">
@@ -125,13 +129,12 @@
         localStorage.setItem("city", 'Bangalore');
     }
     var city = localStorage.getItem('city');
-    //$('#search').attr('name', 'city')
     $('select').change(function() {
     	city_selected = $(this).val();
     	localStorage.setItem("city", city_selected);
     })
     $(function() {
-	    $("select").val(city);
+	    $(".city_search").val(city);
 	});
 	</script>
   </body>

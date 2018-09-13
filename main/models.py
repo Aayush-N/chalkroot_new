@@ -32,7 +32,7 @@ class School(models.Model):
 	photos = CloudinaryField('image')
 	admission_info = models.TextField(blank=True, null=True)
 	overall_rating = models.FloatField(blank=True, null=True)
-	academic_record = models.TextField(blank=True, null=True)
+	board = models.ForeignKey('Board', blank=True, null=True)
 	added_by = models.ForeignKey("User", blank=True, null=True, related_name='school_creator')
 	def __str__(self):
 		return self.name
@@ -55,6 +55,16 @@ class Facilities(models.Model):
 	"""
 	name = models.TextField(blank=True, null=True)
 	facility_type = models.TextField(blank=True, null=True)
+
+	def __str__(self):
+		return self.name
+
+
+class Board(models.Model):
+	"""
+	Facilities: Stores individual facility provided info
+	"""
+	name = models.CharField(max_length=10, blank=True, null=True)
 
 	def __str__(self):
 		return self.name
