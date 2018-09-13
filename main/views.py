@@ -62,21 +62,29 @@ class SchoolListView(ListView):
 	def get_context_data(self, **kwargs):
 		print('rating list')
 		context = super(SchoolListView, self).get_context_data(**kwargs)
-
 		school_list = School.objects.all()
-		
-		rating_list = [school.overall_rating for school in school_list]
+		rating_list = []
+		for school in school_list:
+			rating_list.append(school.overall_rating)
+		print('-----')
 		print(rating_list)
 		context['ratings'] = list(set(rating_list))
 		return context
 
 def search_view(request):
+	context = {}
 	schools = School.objects.all()
 	form = SearchForm(request.GET)
 	if form.is_valid():
 		if form.cleaned_data["city"] and form.cleaned_data["name"]:
 			schools = schools.filter(city__icontains=form.cleaned_data["city"], name__icontains=form.cleaned_data["name"])
-	return render(request, "school_list.html",
-			{"form": form, "object_list": schools})
+	rating_list = []
+	for school in schools:
+		rating_list.append(school.overall_rating)
+	context['ratings'] = list(set(rating_list))
+	context["form"] = form
+	context['object_list'] = schools
+	context['board'] = Board.objects.all()
+	return render(request, "school_list.html",context)
 
 
