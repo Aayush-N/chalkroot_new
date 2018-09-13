@@ -29,7 +29,7 @@ class School(models.Model):
 	facilities = models.CharField(max_length=100 ,blank=True, null=True)
 	contact_number = models.CharField(max_length=20,blank=True, null=True)
 	website = models.CharField(max_length=30, blank=True, null=True)
-	photos = CloudinaryField('image')
+	photos = CloudinaryField('image',blank=True, null=True)
 	admission_info = models.TextField(blank=True, null=True)
 	overall_rating = models.FloatField(blank=True, null=True)
 	board = models.ForeignKey('Board', blank=True, null=True)
