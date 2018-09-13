@@ -120,10 +120,6 @@ img::-moz-selection {
   text-transform: none;
 }
 
-.portfolio-item {
-  box-shadow:;
-}
-
 #portfolio .portfolio-item {
   right: 0;
   margin: 0 0 15px;

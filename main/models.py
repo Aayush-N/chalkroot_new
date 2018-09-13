@@ -26,7 +26,7 @@ class School(models.Model):
 	city = models.CharField(max_length=30, blank=True, null=True)
 	state = models.CharField(max_length=30, blank=True, null=True)
 	description = models.TextField(blank=True, null=True)
-	facilities = models.ForeignKey('Facilities',blank=True, null=True)
+	facilities = models.CharField(max_length=100 ,blank=True, null=True)
 	contact_number = models.CharField(max_length=20,blank=True, null=True)
 	website = models.CharField(max_length=30, blank=True, null=True)
 	photos = CloudinaryField('image')
@@ -46,18 +46,7 @@ class User(AbstractUser):
 	address = models.TextField(blank=True, null=True)
 	photo = models.TextField(blank=True, null=True)
 	child_school = models.ForeignKey('School', blank=True, null=True, related_name='child_school')
-	facility_preferred = models.ManyToManyField('Facilities')
-
-
-class Facilities(models.Model):
-	"""
-	Facilities: Stores individual facility provided info
-	"""
-	name = models.TextField(blank=True, null=True)
-	facility_type = models.TextField(blank=True, null=True)
-
-	def __str__(self):
-		return self.name
+	facility_preferred = models.ManyToManyField('School')
 
 
 class Board(models.Model):
