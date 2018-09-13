@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
     <link rel="stylesheet" href="vendor/@fancyapps/fancybox/jquery.fancybox.min.css">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tagify.css' %}">
 </head>
 
 <body id="body">
@@ -91,7 +92,7 @@
 							{% render_field form.description class="form-control" placeholder="Description" %}
 						</div>
 						<div class="form-group">
-							{% render_field form.facilities class="form-control" %}
+							<input name='facilities' class='form-control' id="id_facilities" placeholder='Facilities' autofocus>
 						</div>
 						<div class="form-group">
 							{% render_field form.contact_number class="form-control" placeholder="Contact Number" %}
@@ -137,6 +138,48 @@
     <script src="{% static 'vendor/@fancyapps/fancybox/jquery.fancybox.min.js' %}"></script>
     <script src="{% static 'js/front.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/tagify.polyfills.js' %}"></script>
+    <script src="{% static 'js/tagify.js' %}"></script>
+    <script src="{% static 'js/jQuery.tagify.js' %}"></script>
 
+<script data-name="basic">
+(function(){
+
+var input = document.querySelector('input[name=facilities]'),
+    tagify = new Tagify(input, {
+        whitelist : [
+        'Playground', 'Canteen', 'Transport',
+        ],
+        blacklist : [""]
+    });
+
+// "remove all tags" button event listener
+document.querySelector('.tags--removeAllBtn')
+    .addEventListener('click', tagify.removeAllTags.bind(tagify))
+
+// Chainable event listeners
+tagify.on('add', onAddTag)
+      .on('remove', onRemoveTag)
+      .on('invalid', onInvalidTag);
+
+// tag added callback
+function onAddTag(e){
+    console.log(e, e.detail);
+    console.log( tagify.DOM.originalInput.value )
+    tagify.off('add', onAddTag) // exmaple of removing a custom Tagify event
+}
+
+// tag remvoed callback
+function onRemoveTag(e){
+    console.log(e, e.detail);
+}
+
+// invalid tag added callback
+function onInvalidTag(e){
+    console.log(e, e.detail);
+}
+
+})()
+</script>
   </body>
   </html>

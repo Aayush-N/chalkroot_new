@@ -54,22 +54,29 @@ class SchoolListView(ListView):
 	template_name = "school_list.html"
 
 	def get_context_data(self, **kwargs):
+		print('rating list')
 		context = super(SchoolListView, self).get_context_data(**kwargs)
+
+		school_list = School.objects.all()
+		
+		rating_list = [school.overall_rating for school in school_list]
+		print(rating_list)
+		context['ratings'] = list(set(rating_list))
 		return context
 
 def search_view(request):
-    schools = School.objects.all()
-    form = SearchForm(request.GET)
-    if form.is_valid():
-        if form.cleaned_data["name"]:
-            schools = countries.filter(name__icontains=form.cleaned_data["name"])
-        elif form.cleaned_data["city"]:
-            schools = countries.filter(government=form.cleaned_data["city"])
-        elif form.cleaned_data["area"]:
-            schools = countries.filter(government=form.cleaned_data["area"])
-        elif form.cleaned_data["academic_record"]:
-            schools = countries.filter(industries=form.cleaned_data["academic_record"])
-    return render(request, "school_list.html",
-            {"form": form, "object_list": schools})
+	schools = School.objects.all()
+	form = SearchForm(request.GET)
+	if form.is_valid():
+		if form.cleaned_data["city"]:
+			schools = schools.filter(city__icontains=form.cleaned_data["city"])
+		elif form.cleaned_data["name"]:
+			schools = schools.filter(name__icontains=form.cleaned_data["name"])
+		elif form.cleaned_data["area"]:
+			schools = schools.filter(area__icontains=form.cleaned_data["area"])
+		elif form.cleaned_data["academic_record"]:
+			schools = schools.filter(industries=form.cleaned_data["academic_record"])
+	return render(request, "school_list.html",
+			{"form": form, "object_list": schools})
 
 
