@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="description" content="Bingo One page parallax responsive HTML Template ">
+  
+  <meta name="author" content="Themefisher.com">
+
+  <title>Add School</title>
+
+<!-- Mobile Specific Meta
+  ================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  	<link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/fontastic.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+    <link rel="stylesheet" href="vendor/@fancyapps/fancybox/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tagify.css' %}">
+</head>
+
+<body>
+	{% include 'partials/nav_primary.html' %}
+
+	<div class="col-md-12 pt-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<select class="form-control compare_one">
+						<option>Select School</option>
+						{% for school in object_list %}
+						<option val="{{school.sid}}" image="{{school.photos.url}}" name="{{school.name}}" rating="{{school.overall_rating}}" board="{{school.board.name}}">{{school.name}}</option>
+						{% endfor %}
+					</select>
+					<p class="mt-5 show_one_photo"></p>
+					<p class="mt-5 show_one_rating"></p>
+					<p class="mt-5 show_one_board"></p>
+				</div>
+				<div class="col-md-4">
+					<select class="form-control compare_two">
+						<option>Select School</option>
+						{% for school in object_list %}
+						<option val="{{school.sid}}" image="{{school.photos.url}}" name="{{school.name}}" rating="{{school.overall_rating}}" board="{{school.board.name}}">{{school.name}}</option>
+						{% endfor %}
+					</select>
+					<p class="mt-5 show_two_photo"></p>
+					<p class="mt-5 show_two_rating"></p>
+					<p class="mt-5 show_two_board"></p>
+				</div>
+				<div class="col-md-4">
+					<select class="form-control compare_three">
+						<option>Select School</option>
+						{% for school in object_list %}
+						<option val="{{school.sid}}" image="{{school.photos.url}}" name="{{school.name}}" rating="{{school.overall_rating}}" board="{{school.board.name}}">{{school.name}}</option>
+						{% endfor %}
+					</select>
+					<p class="mt-5 show_three_photo"></p>
+					<p class="mt-5 show_three_rating"></p>
+					<p class="mt-5 show_three_board"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/popper.js/umd/popper.min.js' %}"> </script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <script type="text/javascript">
+    	$(function() {
+    		$('.compare_one').change(function() {
+    			var rating = $('option:selected', this).attr('rating');
+    			var board = $('option:selected', this).attr('board');
+    			var image = $('option:selected', this).attr('image');
+    			$('.show_one_photo').html('<img style="width:200px;height:200px;" src="' + image + '">');
+    			$('.show_one_rating').html(rating);
+    			$('.show_one_board').html(board);
+    		})
+    		$('.compare_two').change(function() {
+    			var rating = $('option:selected', this).attr('rating');
+    			var board = $('option:selected', this).attr('board');
+    			var image = $('option:selected', this).attr('image');
+    			$('.show_two_photo').html('<img style="width:200px;height:200px;" src="' + image + '">');
+    			$('.show_two_rating').html(rating);
+    			$('.show_two_board').html(board);
+    		})
+    		$('.compare_three').change(function() {
+    			var rating = $('option:selected', this).attr('rating');
+    			var board = $('option:selected', this).attr('board');
+    			var image = $('option:selected', this).attr('image');
+    			$('.show_three_photo').html('<img style="width:200px;height:200px;" src="' + image + '">');
+    			$('.show_three_rating').html(rating);
+    			$('.show_three_board').html(board);
+    		})
+    	})
+    </script>
+</body>
+</html>

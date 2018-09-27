@@ -88,3 +88,10 @@ def search_view(request):
 	return render(request, "school_list.html",context)
 
 
+class CompareSchoolView(ListView):
+	model = School
+	template_name = "compare.html"
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(CompareSchoolView, self).get_context_data(**kwargs)
+		return context
