@@ -20,12 +20,41 @@
 	<link href='https://api.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
   </head>
   <body>
-	{% include 'partials/nav_primary.html' %}
+   <header class="header">
+      <nav class="navbar navbar-expand-lg">
+        	<span id="open_nav" style="color:white;font-size:30px;cursor:pointer" onclick="openNav();"><i class="fa fa-bars"></i></span>
+          <!-- Navbar Brand -->
+          <div class="d-md-flex d-block flex-row mx-md-auto mx"  style="text-align:center;">
+            <a style="margin:0;float:none;" href="index.html" class="navbar-brand">ChalkRoot</a>
+            
+            <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span></span><span></span><span></span></button>
+          </div>
+      </nav>
+    </header>
+    <div id="mySidenav" class="sidenav col-md-12">
+    	<div class="row">
+	    	<div style="padding:0%;border-right:1px solid #ddd;" class="sidenav_one col-md-6">
+	    		<a href="#" style="display:inline">
+		    		<div class="sidebar_div">
+				  		<span class="col-md-11" style="text-align: center;vertical-align: middle;line-height: 200px;">Home</span>
+				  	</div>
+			  	</a>
+			  	<a href="#" style="display:inline">
+				  	<div class="sidebar_div">
+				  		<span class="col-md-11" style="text-align: center;vertical-align: middle;line-height: 200px;">Methodologies</span>
+				  	</div>
+			  	</a>
+		  	</div>
+		  	<div style="padding:5%;" class="sidenav_two col-md-6">
+		  		<h5>About</h5>
+		  	</div>
+	  	</div>
+	</div>
 	<section style="background:no-repeat;padding:10%;background-image:url({% static 'img/bg.jpg' %});" class="newsletter">    
 	  	<div class="container">
 			<div class="row">
 		  		<div class="col-md-12">
-		  			<form action="/list/" method="get">
+		  			<form action="/list/" method="get" autocomplete="off">
 				      	<div class="input-group">
 				      		<select name="city" class="form-control col-md-2 city_search">
 							  	<option val="Bangalore">Bangalore</option>
@@ -36,7 +65,17 @@
 							  	<option val="{{board.name}}">{{board.name}}</option>
 							  	{% endfor %}
 							</select-->
-						  	<input type="text" name="name" id="search" placeholder="Search schools..." class="form-control">
+							<div class="dropdown" style="float:left;position:relative; display: inline-block;">
+  								<input type="text" name="name" id="search" placeholder="Search schools..." class="form-control" style="width:100%;">
+								<div style="display: none;position: absolute;right: 0; background-color: #f9f9f9;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);z-index: 1;" class="dropdown-content col-md-12" style="left:0;">
+									<div class="row">
+								    	<div class="col-md-6">asdf</div>
+								    	<div class="col-md-6">asfa</div>
+								    	<div class="col-md-6">asdf</div>
+								    	<div class="col-md-6">asfa</div>
+								    </div>
+							  	</div>
+							</div>
 						  	<button type="submit" class="submit">Search</button>
 						</div>
 		  			</form>
@@ -44,7 +83,7 @@
 			</div>
 	  	</div>
 	</section>
-	<button id="map_btn" class="col-md-3 btn" style="background-color:rgb(162, 57, 202); z-index:1000; position:fixed;bottom:0;color:white;padding:1%;">Find Schools Near You <span class="col-md-1"><i class="fa fa-map-marker-alt"></i></span></button>
+	<button id="map_btn" class="btn" style="background-color:#5588ff; z-index:1000; position:fixed;bottom:0;color:white;padding:1%;">Find Schools Near You <span class="col-md-1"><i class="fa fa-map-marker-alt"></i></span></button>
 	<section class="latest-posts no-padding mt-4"> 
 		<div class="row">
 		  	<div class="post col-md-6">
@@ -214,6 +253,31 @@
     $(function() {
 	    $(".city_search").val(city);
 	});
+	</script>
+	<script>
+	$(function() {
+		$('input').focus(function() {
+			$('.dropdown-content').show();
+		})
+		$('input').focusout(function() {
+			$('.dropdown-content').hide();
+		})
+	})
+	</script>
+	<script>
+		function openNav() {
+		    document.getElementById("mySidenav").style.height = "100%";
+		    document.getElementById("map_btn").style.width = "800px";
+		    $('#open_nav').html('<i class="fa fa-times"></i>');
+		    $('#open_nav').attr('onclick', 'closeNav();');
+		}
+
+		function closeNav() {
+		    document.getElementById("mySidenav").style.height = "0";
+		    document.getElementById("map_btn").style.width = "250px";
+		    $('#open_nav').html('<i class="fa fa-bars"></i>');
+		    $('#open_nav').attr('onclick', 'openNav();');
+		}
 	</script>
   </body>
 </html>

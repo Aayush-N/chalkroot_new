@@ -12,6 +12,51 @@ Bootstrap Temple Blog Template
 * GENERAL
 * =====================
 */
+.sidenav {
+    height: 0px;
+    width: 800px;
+    position: fixed;
+    z-index: 1000;
+    margin-top: 0%;
+    left: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 1s;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.sidebar_div {
+  background-color: white;
+  padding:5%;
+  height:250px;
+  border-bottom:1px solid #ddd;
+  font-size:2em;
+  color:black;
+  font-weight:bold;
+}
+
+.sidebar_div:hover{
+  background-color: black;
+  padding:5%;
+  height:250px;
+  border-bottom:1px solid #ddd;
+  font-size:2em;
+  color:white;
+  font-weight:bold;
+}
+
+
 .text-bold {
   font-weight: 700;
 }
@@ -424,20 +469,20 @@ div[class*="-btn"] {
 /* General Media Query ------------------------------------- */
 @media (max-width: 767px) {
   nav.navbar .search-btn {
-	margin-left: 0;
-	padding-left: 0;
-	border-left: none;
+  margin-left: 0;
+  padding-left: 0;
+  border-left: none;
   }
 }
 
 @media (max-width: 575px) {
   nav.navbar .container {
-	width: 100%;
+  width: 100%;
   }
   .breadcrumb li {
-	display: block;
-	width: 100%;
-	text-align: center;
+  display: block;
+  width: 100%;
+  text-align: center;
   }
 }
 
@@ -447,7 +492,7 @@ div[class*="-btn"] {
 * ==========================================================
 */
 .navbar {
-  background: rgb(162, 57, 202);
+  background: #5588ff;
   color: #e8dfdd !important;
   padding-top: 20px !important;
   padding-bottom: 20px !important;
@@ -608,16 +653,16 @@ div[class*="-btn"] {
 /* Navbar Media Query ------------------------------------- */
 @media (max-width: 991px) {
   nav.navbar .navbar-header {
-	width: 100%;
+  width: 100%;
   }
   nav.navbar::after {
-	width: 100%;
+  width: 100%;
   }
   nav.navbar.active::after {
-	width: calc(100% - 170px);
+  width: calc(100% - 170px);
   }
   nav.navbar .search-area {
-	font-size: 0.75em;
+  font-size: 0.75em;
   }
 }
 
@@ -658,7 +703,7 @@ section.hero .continue i {
 /* Hero Section Media Query ------------------------------------- */
 @media (max-width: 767px) {
   section.hero .container {
-	padding: 150px 20px;
+  padding: 150px 20px;
   }
 }
 
@@ -763,35 +808,35 @@ section.featured-posts .post-footer {
 /* Featured Posts Section Media Query ------------------------------------- */
 @media (max-width: 991px) {
   section.featured-posts .image {
-	-webkit-box-ordinal-group: 2;
-	-ms-flex-order: 1;
-	order: 1;
-	max-height: 300px;
-	min-height: auto !important;
+  -webkit-box-ordinal-group: 2;
+  -ms-flex-order: 1;
+  order: 1;
+  max-height: 300px;
+  min-height: auto !important;
   }
   section.featured-posts .image img {
-	width: 100%;
-	height: auto !important;
+  width: 100%;
+  height: auto !important;
   }
   section.featured-posts .text {
-	-webkit-box-ordinal-group: 3;
-	-ms-flex-order: 2;
-	order: 2;
+  -webkit-box-ordinal-group: 3;
+  -ms-flex-order: 2;
+  order: 2;
   }
 }
 
 @media (max-width: 575px) {
   section.featured-posts .post-footer {
-	font-size: 0.9em;
+  font-size: 0.9em;
   }
 }
 
 @media (max-width: 350px) {
   section.featured-posts .text-inner {
-	padding: 15px;
+  padding: 15px;
   }
   section.featured-posts .post-footer {
-	font-size: 0.75em;
+  font-size: 0.75em;
   }
 }
 
@@ -934,10 +979,10 @@ section.latest-posts header {
 /* Latest Posts Section Media Query ------------------------------------- */
 @media (max-width: 767px) {
   .post {
-	margin-bottom: 40px;
+  margin-bottom: 40px;
   }
   .post:last-of-type {
-	margin-bottom: 0;
+  margin-bottom: 0;
   }
 }
 
@@ -962,15 +1007,15 @@ section.newsletter input {
 }
 
 .no-padding {
-	padding:0px !important;
+  padding:0px !important;
 }
 
 section.newsletter .submit {
   height: 60px;
   padding: 0 30px;
   line-height: 60px;
-  background: #0e0816;
-  border: 1px solid #0e0816;
+  background: #3366ff;
+  border: 1px solid #3366ff;
   color: #fff;
   position: absolute;
   top: 0;
@@ -994,13 +1039,13 @@ section.newsletter .submit {
 /* Newsletter Section Media Query ------------------------------------- */
 @media (max-width: 575px) {
   section.newsletter input {
-	font-size: 0.95em;
-	width: 100%;
+  font-size: 0.95em;
+  width: 100%;
   }
   section.newsletter .submit {
-	position: static;
-	width: 100%;
-	margin-top: 10px;
+  position: static;
+  width: 100%;
+  margin-top: 10px;
   }
 }
 
@@ -1157,21 +1202,21 @@ footer.main-footer .title::after {
 /* Footer Media Query ------------------------------------- */
 @media (max-width: 767px) {
   footer.main-footer div[class*="col-"] {
-	margin-bottom: 40px;
+  margin-bottom: 40px;
   }
   footer.main-footer div[class*="col-"]:last-of-type {
-	margin-bottom: 0;
+  margin-bottom: 0;
   }
   footer.main-footer .latest-posts > a {
-	width: 100%;
-	margin-bottom: 20px;
+  width: 100%;
+  margin-bottom: 20px;
   }
   footer.main-footer .copyrights div[class*="col-"] {
-	margin-bottom: 20px;
-	text-align: center !important;
+  margin-bottom: 20px;
+  text-align: center !important;
   }
   footer.main-footer .copyrights div[class*="col-"]:last-of-type {
-	margin-bottom: 0;
+  margin-bottom: 0;
   }
 }
 
@@ -1442,13 +1487,13 @@ main.posts-listing .post-footer {
 }
 
 .text-muted {
-  	position:absolute;
-	top:150px;
-	left:100px;
-	width:500px;
-	font-size:1.5em !important;
-	opacity:1 !important;
-	color:white !important;
+    position:absolute;
+  top:150px;
+  left:100px;
+  width:500px;
+  font-size:1.5em !important;
+  opacity:1 !important;
+  color:white !important;
 }
 
 .blog-post .post-comments header {
@@ -1574,16 +1619,16 @@ blockquote.blockquote p {
 
 @media (max-width: 767px) {
   .posts-nav a {
-	width: 100% !important;
+  width: 100% !important;
   }
 }
 
 @media (max-width: 575px) {
   .blog-post .title::after {
-	display: none !important;
+  display: none !important;
   }
   .blog-post .author {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
   }
 }
 
