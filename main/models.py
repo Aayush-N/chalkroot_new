@@ -20,6 +20,7 @@ class School(models.Model):
 	"""
 	sid = models.IntegerField(primary_key=True)
 	name = models.CharField(max_length=30, blank=True, null=True)
+	category =  models.ForeignKey('Category', blank=True, null=True)
 	address_line1 = models.CharField(max_length=30, blank=True, null=True)
 	address_line2 = models.CharField(max_length=30, blank=True, null=True)
 	area = models.CharField(max_length=30, blank=True, null=True)
@@ -71,5 +72,10 @@ class Reviews(models.Model):
 	def __str__(self):
 		return parent.name
 
+class Category(models.Model):
+	"""
+	Category: Stores the type of school, primary, secondary,etc.
+	"""
+	name = models.CharField(max_length=10, blank=True, null=True)
 
 	

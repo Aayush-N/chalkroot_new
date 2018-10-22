@@ -76,8 +76,20 @@ def search_view(request):
 	schools = School.objects.all()
 	form = SearchForm(request.GET)
 	if form.is_valid():
-		if form.cleaned_data["city"] and form.cleaned_data["name"]:
-			schools = schools.filter(city__icontains=form.cleaned_data["city"], name__icontains=form.cleaned_data["name"])
+		if form.cleaned_data["city"] and form.cleaned_data["name"] and form.cleaned_data["board"] and form.cleaned_data["type"]:
+			schools = schools.filter(city__icontains=form.cleaned_data["city"], 
+				name__icontains=form.cleaned_data["name"], 
+				board__name__icontains=form.cleaned_data["board"],
+				category__name__icontains=form.cleaned_data["type"])
+		elif form.cleaned_data["city"] and form.cleaned_data["name"] and form.cleaned_data["board"] and not form.cleaned_data["type"]:
+			schools = schools.filter(city__icontains=form.cleaned_data["city"], 
+				name__icontains=form.cleaned_data["name"], 
+				board__name__icontains=form.cleaned_data["board"])
+		elif form.cleaned_data["city"] and form.cleaned_data["name"] and not form.cleaned_data["board"] and not form.cleaned_data["type"]:
+			schools = schools.filter(city__icontains=form.cleaned_data["city"], 
+				name__icontains=form.cleaned_data["name"],)
+		else:
+			pass
 	rating_list = []
 	for school in schools:
 		rating_list.append(school.overall_rating)
