@@ -21,7 +21,7 @@ Bootstrap Temple Blog Template
     left: 0;
     background-color: #fff;
     overflow-x: hidden;
-    transition: 1s;
+    transition: 0.5s;
 }
 
 .sidenav .closebtn {
@@ -82,6 +82,33 @@ span {
   transition: all 0.3s;
 }
 
+.filter_div {
+  color:black;
+  background-color: white;
+  border-radius:2%;
+  padding:2%;
+  margin-left:5.5%;
+  text-decoration:none !important;
+}
+
+.filter_div:hover {
+  color:white;
+  background-color: #3366ff;
+}
+
+.filter_list {
+  color:black;
+  background-color: white;
+  border-radius:2%;
+  padding:2%;
+  text-decoration:none !important;
+}
+
+.filter_list:hover {
+  color:white;
+  background-color: #3366ff;
+}
+
 a:hover, a:focus,
 i:hover,
 i:focus,
@@ -102,7 +129,6 @@ ul {
 
 section {
   padding: 10px 0;
-  overflow-x: hidden;
 }
 
 button,
@@ -991,6 +1017,7 @@ section.latest-posts header {
 *     NEWSLETTER SECTION
 * ==========================================================
 */
+
 section.newsletter .form-group {
   position: relative;
 }

@@ -17,7 +17,9 @@ class HomePageView(TemplateView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(HomePageView, self).get_context_data(**kwargs)
 		board = Board.objects.all()
+		types = Category.objects.all()
 		context['board_list'] =  board
+		context['type_list'] =  types
 		return context
 
 

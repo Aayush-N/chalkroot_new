@@ -50,7 +50,7 @@
 		  	</div>
 	  	</div>
 	</div>
-	<section style="background:no-repeat;padding:10%;background-image:url({% static 'img/bg.jpg' %});" class="newsletter">    
+	<section style="position:relative;padding:10%;background-image:url({% static 'img/bg.jpg' %});" class="newsletter">    
 	  	<div class="container">
 			<div class="row">
 		  		<div class="col-md-12">
@@ -65,14 +65,29 @@
 							  	<option val="{{board.name}}">{{board.name}}</option>
 							  	{% endfor %}
 							</select-->
-							<div class="dropdown" style="float:left;position:relative; display: inline-block;">
-  								<input type="text" name="name" id="search" placeholder="Search schools..." class="form-control" style="width:100%;">
-								<div style="display: none;position: absolute;right: 0; background-color: #f9f9f9;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);z-index: 1;" class="dropdown-content col-md-12" style="left:0;">
+							<div class="dropdown" style="float:left;display: inline-block;">
+  								<input type="text" name="name" id="search" placeholder="Search schools..." class="form-control" style="width:700px;">
+								<div style="padding:2%;display: none;position: absolute; background-color: #ddd;z-index: 99999 !important;" class="dropdown-content-asf col-md-12">
+									<div class="col-md-12">
+										<p>Filters you select will appear here</p>
+										<ul style="list-style-type:none;">
+											<div class="row" class="col-md-12" id="list_filters">
+											</div>
+										</ul>
+									</div>
+									<p>Filters</p>
 									<div class="row">
-								    	<div class="col-md-6">asdf</div>
-								    	<div class="col-md-6">asfa</div>
-								    	<div class="col-md-6">asdf</div>
-								    	<div class="col-md-6">asfa</div>
+								    	<button type="button" id="board_filter" class="filter_div col-md-5">Board</button>
+								    	<button type="button" id="type_filter" class="filter_div col-md-5">Type</button>
+								    </div>
+								    <p>Select</p>
+									<div class="row">
+										{% for board in board_list %}
+								    	<div style="display:none;" class="board_filter_list filter_div col-md-5">{{board.name}}</div>
+								    	{% endfor %}
+								    	{% for type in type_list %}
+								    	<div style="display:none;" class="type_filter_list filter_div col-md-5">{{type.name}}</div>
+								    	{% endfor %}
 								    </div>
 							  	</div>
 							</div>
@@ -84,7 +99,7 @@
 	  	</div>
 	</section>
 	<button id="map_btn" class="btn" style="background-color:#5588ff; z-index:1000; position:fixed;bottom:0;color:white;padding:1%;">Find Schools Near You <span class="col-md-1"><i class="fa fa-map-marker-alt"></i></span></button>
-	<section class="latest-posts no-padding mt-4"> 
+	<section style="position:absolute;z-index:-10000;" class="latest-posts no-padding mt-4"> 
 		<div class="row">
 		  	<div class="post col-md-6">
 				<div class="post-thumbnail">
@@ -257,11 +272,11 @@
 	<script>
 	$(function() {
 		$('input').focus(function() {
-			$('.dropdown-content').show();
+			$('.dropdown-content-asf').show();
 		})
-		$('input').focusout(function() {
-			$('.dropdown-content').hide();
-		})
+		// $('.dropdown-content-asf').on('click', function(e) {
+  // 			e.stopPropagation();
+		// });
 	})
 	</script>
 	<script>
@@ -278,6 +293,36 @@
 		    $('#open_nav').html('<i class="fa fa-bars"></i>');
 		    $('#open_nav').attr('onclick', 'openNav();');
 		}
+	</script>
+	<script>
+	$(function() {
+		$('#board_filter').click(function() {
+			$('.board_filter_list').each(function() {
+				$(this).show();
+			})
+			$('.type_filter_list').each(function() {
+				$(this).hide();
+			})
+		})
+		$('#type_filter').click(function() {
+			$('.board_filter_list').each(function() {
+				$(this).hide();
+			})
+			$('.type_filter_list').each(function() {
+				$(this).show();
+			})
+		})
+		$('.board_filter_list').each(function() {
+			$(this).click(function() {
+				$('#list_filters').append('<li><div class="alert alert-dismissible col-md-12"><input name="board" type="hidden" value="' + $(this).html() + '">' + $(this).html() + '<button type="button" class="close" data-dismiss="alert">&times;</button></div></li>');
+			})
+		})
+		$('.type_filter_list').each(function() {
+			$(this).click(function() {
+				$('#list_filters').append('<li><div class="alert alert-dismissible col-md-12"><input name="type" type="hidden" value="' + $(this).html() + '">' + $(this).html() + '<button type="button" class="close" data-dismiss="alert">&times;</button></div></li>');
+			})
+		})
+	})
 	</script>
   </body>
 </html>
